@@ -1,0 +1,30 @@
+import time
+room_num = 0
+def begin():
+    print("Room " + str(room_num))
+    print(" _______________")
+    print("|               |")
+    print("|               |")
+    print("|               |")
+    print("|               |")
+    print("|               |")
+    print(" _______________")
+def room0():
+    print("Room " + str(room_num))
+    row1 = [' ', '_', '_', '_', '_', '_', ' ']
+    row2 = ['|', ' ', ' ', ' ', ' ', ' ', '|']
+    row3 = ['|', ' ', ' ', ' ', ' ', ' ', '|']
+    row4 = ['|', ' ', ' ', ' ', ' ', ' ', '|']
+    row5 = ['|', ' ', ' ', ' ', ' ', ' ', '|']
+    row6 = [' ', '_', '_', '_', '_', '_', ' ']
+    print (*row1)
+    print (*row2)
+    print (*row3)
+    print (*row4)
+    print (*row5)
+    print (*row6)
+print("Test")
+time.sleep(5)
+begin()
+time.sleep(5)
+room0()
