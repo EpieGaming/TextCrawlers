@@ -1,14 +1,5 @@
 import time
 room_num = 0
-def begin():
-    print("Room " + str(room_num))
-    print(" _______________")
-    print("|               |")
-    print("|               |")
-    print("|               |")
-    print("|               |")
-    print("|               |")
-    print(" _______________")
 def room0():
     print("Room " + str(room_num))
     row1 = [' ', '_', '_', '_', '_', '_', ' ']
@@ -24,7 +15,19 @@ def room0():
     print (*row5)
     print (*row6)
 print("Test")
-time.sleep(5)
-begin()
-time.sleep(5)
-room0()
+time.sleep(3)
+option = ''
+if option == 'play':
+    room0()
+    room0()
+option = 'start'
+playerx = 0
+playery = 0
+while option != 'quit':
+    user = input("What would you like to do? ")
+    if user == 'play':
+        option = 'play'
+        playerx = 1
+        playery = 1
+    elif user == 'quit':
+        option = 'quit'
