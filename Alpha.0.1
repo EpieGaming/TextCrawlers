@@ -1,33 +1,38 @@
+#Import time for sleep function
 import time
+#Track progress on player
 room_num = 0
-def room0():
-    print("Room " + str(room_num))
+#Generate first row
+def gen_row1():
     row1 = [' ', '_', '_', '_', '_', '_', ' ']
+    return row1
+#Generate second row
+def gen_row2():
     row2 = ['|', ' ', ' ', ' ', ' ', ' ', '|']
-    row3 = ['|', ' ', ' ', ' ', ' ', ' ', '|']
-    row4 = ['|', ' ', ' ', ' ', ' ', ' ', '|']
-    row5 = ['|', ' ', ' ', ' ', ' ', ' ', '|']
-    row6 = [' ', '_', '_', '_', '_', '_', ' ']
-    print (*row1)
-    print (*row2)
-    print (*row3)
-    print (*row4)
-    print (*row5)
-    print (*row6)
+    return row2
+def gen_map():
+    print(row1)
+    print(row2)
 print("Test")
 time.sleep(3)
-option = ''
-if option == 'play':
-    room0()
-    room0()
 option = 'start'
 playerx = 0
 playery = 0
-while option != 'quit':
+while option == 'start':
     user = input("What would you like to do? ")
     if user == 'play':
-        option = 'play'
         playerx = 1
         playery = 1
+        print("Starting...")
+        time.sleep(5)
+        option = 'play'
     elif user == 'quit':
         option = 'quit'
+    else:
+        print("Please try again!")
+while option == 'play':
+    gen_row1()
+    gen_row2()
+    row2[playerY] = 'X'
+    gen_map()
+    option = 'move'
