@@ -58,12 +58,12 @@ while option != 'quit':
         row5 = gen_bottom()
         if playerx <= 1:
             playerx = 1
-            row1[playery = 'X']
+            row1[playery] = 'X'
         elif playerx == 2:
-            row2[playery = 'X']
+            row2[playery] = 'X'
         elif playerx >= 3:
             playerx = 3
-            row3[playery = 'X']
+            row3[playery] = 'X'
         else:
             print("IDK how but the wall and row check just broke.")
         row2[playery] = 'X'
