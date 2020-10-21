@@ -3,36 +3,90 @@ import time
 #Track progress on player
 room_num = 0
 #Generate first row
-def gen_row1():
-    row1 = [' ', '_', '_', '_', '_', '_', ' ']
-    return row1
+def gen_top():
+    top = [' ', '_', '_', '_', '_', '_', ' ']
+    return top
 #Generate second row
+def gen_row1():
+    row1 = ['|', ' ', ' ', ' ', ' ', ' ', '|']
+    return row1
+#Generate thrid row
 def gen_row2():
     row2 = ['|', ' ', ' ', ' ', ' ', ' ', '|']
     return row2
+#Generate fourth row
+def gen_row3():
+    row3 = ['|', ' ', ' ', ' ', ' ', ' ', '|']
+    return row3
+#Generate fifth row
+def gen_bottom():
+    bottom = [' ', '_', '_', '_', '_', '_', ' ']
+    return bottom
+#Generate the row combined
 def gen_map():
-    print(row1)
-    print(row2)
+    print(*top)
+    print(*row1)
+    print(*row2)
+    print(*row3)
+    print(*bottom)
 print("Test")
 time.sleep(3)
 option = 'start'
-playerx = 0
-playery = 0
-while option == 'start':
-    user = input("What would you like to do? ")
-    if user == 'play':
-        playerx = 1
-        playery = 1
-        print("Starting...")
-        time.sleep(5)
-        option = 'play'
-    elif user == 'quit':
-        option = 'quit'
+#Main function to see what to do
+while option != 'quit':
+    #Start the game
+    if option == 'start':
+        #Ask player what to do
+        user = input("What would you like to do? ")
+        if user == 'play':
+            print("Starting...")
+            #Player coordinates
+            playerx = 1
+            playery = 1
+            time.sleep(5)
+            option = 'move'
+        elif user == 'quit':
+            option = 'quit'
+        else:
+            print("Please try again!")
+    #Once the player is playing, then generate the map and acess player position
+    elif option == 'play':
+        row1 = gen_top()
+        row2 = gen_row1()
+        row3 = gen_row2()
+        row4 = gen_row3()
+        row5 = gen_bottom()
+        if playerx <= 1:
+            playerx = 1
+            row1[playery = 'X']
+        elif playerx == 2:
+            row2[playery = 'X']
+        elif playerx >= 3:
+            playerx = 3
+            row3[playery = 'X']
+        else:
+            print("IDK how but the wall and row check just broke.")
+        row2[playery] = 'X'
+        gen_map()
+        option = 'move'
+    #Choose to move
+    elif option == 'move':
+        movement = input("Move left, right, up, or down. ")
+        if movement == 'left':
+            playery -= 1
+            option = 'play'
+        elif movement == 'right':
+            playery += 1
+            option = 'play'
+        elif movement == 'up':
+            playerx -= 1
+            option = 'play'
+        elif movement == 'down':
+            playerx += 1
+            option = 'play'
+        else:
+            print('Error: Movement broken')
+            option = 'quit'
     else:
-        print("Please try again!")
-while option == 'play':
-    gen_row1()
-    gen_row2()
-    row2[playerY] = 'X'
-    gen_map()
-    option = 'move'
+        print('Error: Something broke')
+        option = 'quit'
