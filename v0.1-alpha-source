@@ -43,19 +43,26 @@ while option != 'quit':
             #Player coordinates
             playerx = 1
             playery = 1
-            time.sleep(5)
             option = 'play'
         elif user == 'quit':
             option = 'quit'
         else:
             print("Please try again!")
-    #Once the player is playing, then generate the map and acess player position
+    #Once the player is playing, then generate the map and access player position
     elif option == 'play':
         top = gen_top()
         row1 = gen_row1()
         row2 = gen_row2()
         row3 = gen_row3()
         bottom = gen_bottom()
+        #Check playery for any OOB
+        if playery <= 1:
+            playery = 1
+        elif playery >= 5:
+            playery = 5
+        else:
+            playery = playery
+        #Check playerx for any OOB
         if playerx <= 1:
             playerx = 1
             row1[playery] = 'X'
