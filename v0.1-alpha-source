@@ -114,15 +114,15 @@ while option != 'quit':
         else:
             print(Working)
             time.sleep(3)
-        print(room_num)
-        gen_map()
-        print("Goal: " + str(goal))
-        print("Side: " + side)
-        print("PlayerX: " + str(playerx))
-        print("PlayerY: " + str(playery))
-        print('Turn: ' + str(turn))
-        turn += 1
-        option = 'move'
+            print(room_num)
+            gen_map()
+            print("Goal: " + str(goal))
+            print("Side: " + side)
+            print("PlayerX: " + str(playerx))
+            print("PlayerY: " + str(playery))
+            print('Turn: ' + str(turn))
+            turn += 1
+            option = 'move'
     #Choose to move
     elif option == 'move':
         movement = input("Move left, right, up, or down. ")
