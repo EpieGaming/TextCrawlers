@@ -1,7 +1,11 @@
 #Import time for sleep function
 import time
+#Import random
+import random
 #Track progress on player
 room_num = 0
+#Keeps track of player turns
+turn = 0
 #Generate first row
 def gen_top():
     top = [' ', '_', '_', '_', '_', '_', ' ']
@@ -30,7 +34,6 @@ def gen_map():
     print(*row3)
     print(*bottom)
 print("v0.1-alpha")
-time.sleep(3)
 option = 'start'
 #Main function to see what to do
 while option != 'quit':
@@ -50,30 +53,75 @@ while option != 'quit':
             print("Please try again!")
     #Once the player is playing, then generate the map and access player position
     elif option == 'play':
+        #Generate the rows
+        print("Working")
         top = gen_top()
         row1 = gen_row1()
         row2 = gen_row2()
         row3 = gen_row3()
         bottom = gen_bottom()
-        #Check playery for any OOB
-        if playery <= 1:
-            playery = 1
-        elif playery >= 5:
-            playery = 5
-        else:
-            playery = playery
         #Check playerx for any OOB
         if playerx <= 1:
-            playerx = 1
             row1[playery] = 'X'
         elif playerx == 2:
             row2[playery] = 'X'
         elif playerx >= 3:
-            playerx = 3
             row3[playery] = 'X'
         else:
             print("IDK how but the wall and row check just broke.")
+        #Use generated rows that have been edited to form map
+        if turn == 0:
+            #Find goal spot
+            goalside = random.randrange(1,3)
+            side = 'None'
+            if goalside == 1:
+                goal = random.randrange(1, 6)
+                side = 'y'
+            elif goalside == 2:
+                goal = random.randrange(1, 4)
+                side = 'x'
+            else:
+                print("It do be broke in the goal area.")
+        else:
+            turn == turn
+        if side == 'y':
+            top[goal] = ' '
+        elif side == 'x':
+            if goal == 1:
+                row1[6] = ' '
+            elif goal == 2:
+                row2[6] = ' '
+            elif goal == 3:
+                row3[6] = ' '
+            else:
+                print("Goal broken. Please fix.")
+        else:
+            print("Goal but big broken. Please fix.")
+        if side == 'y':
+            if goal == playery and playerx == 1:
+                room_num += 1
+                turn = 0
+                option = 'play'
+                playerx = 1
+                playery = 1
+        elif side == 'x':
+            if goal == playerx and playerx == 6:
+                room_num += 1
+                turn = 0
+                option = "play"
+                playerx = 1
+                playery = 1
+        else:
+            print(Working)
+            time.sleep(3)
+        print(room_num)
         gen_map()
+        print("Goal: " + str(goal))
+        print("Side: " + side)
+        print("PlayerX: " + str(playerx))
+        print("PlayerY: " + str(playery)
+        print('Turn: ' + str(turn))
+        turn += 1
         option = 'move'
     #Choose to move
     elif option == 'move':
