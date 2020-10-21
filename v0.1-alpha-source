@@ -105,7 +105,7 @@ while option != 'quit':
                 playerx = 1
                 playery = 1
         elif side == 'x':
-            if goal == playerx and playerx == 6:
+            if goal == playerx and playery == 6:
                 room_num += 1
                 turn = 0
                 option = "play"
@@ -119,7 +119,7 @@ while option != 'quit':
         print("Goal: " + str(goal))
         print("Side: " + side)
         print("PlayerX: " + str(playerx))
-        print("PlayerY: " + str(playery)
+        print("PlayerY: " + str(playery))
         print('Turn: ' + str(turn))
         turn += 1
         option = 'move'
