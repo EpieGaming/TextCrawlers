@@ -29,7 +29,7 @@ def gen_map():
     print(*row2)
     print(*row3)
     print(*bottom)
-print("Test")
+print("v0.1-alpha")
 time.sleep(3)
 option = 'start'
 #Main function to see what to do
@@ -44,18 +44,18 @@ while option != 'quit':
             playerx = 1
             playery = 1
             time.sleep(5)
-            option = 'move'
+            option = 'play'
         elif user == 'quit':
             option = 'quit'
         else:
             print("Please try again!")
     #Once the player is playing, then generate the map and acess player position
     elif option == 'play':
-        row1 = gen_top()
-        row2 = gen_row1()
-        row3 = gen_row2()
-        row4 = gen_row3()
-        row5 = gen_bottom()
+        top = gen_top()
+        row1 = gen_row1()
+        row2 = gen_row2()
+        row3 = gen_row3()
+        bottom = gen_bottom()
         if playerx <= 1:
             playerx = 1
             row1[playery] = 'X'
@@ -66,7 +66,6 @@ while option != 'quit':
             row3[playery] = 'X'
         else:
             print("IDK how but the wall and row check just broke.")
-        row2[playery] = 'X'
         gen_map()
         option = 'move'
     #Choose to move
