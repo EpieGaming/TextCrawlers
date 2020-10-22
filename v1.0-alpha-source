@@ -33,7 +33,7 @@ def gen_map():
     print(*row2)
     print(*row3)
     print(*bottom)
-print("v0.1-alpha")
+print("v1.0-alpha")
 option = 'start'
 #Main function to see what to do
 while option != 'quit':
